@@ -8,6 +8,8 @@
 #define CHAR8_T_REMEDIATION_HPP
 
 
+#include <algorithm>
+#include <string>
 #include <utility>
 
 
@@ -166,6 +168,22 @@ char_array(const char8_t(&)[N]) -> char_array<N>;
 #endif // }
 
 #endif // }
+
+
+// from_u8string enables explicit conversion from std::u8string to
+// std::string.
+
+std::string from_u8string(const std::string &s) {
+  return s;
+}
+std::string from_u8string(std::string &&s) {
+  return std::move(s);
+}
+#if defined(__cpp_lib_char8_t)
+std::string from_u8string(const std::u8string &s) {
+  return std::string(s.begin(), s.end());
+}
+#endif
 
 
 #endif // } CHAR8_T_REMEDIATION_HPP

@@ -5,7 +5,9 @@
 // and conditions.
 
 
+#include <filesystem>
 #include "char8_t-remediation.h"
+
 
 void test1() {
 #if __cplusplus >= 201703L // u8 character literals require C++17.
@@ -102,3 +104,9 @@ void test_array_init() {
 #endif
 #endif
 }
+
+#if __cplusplus >= 201703L // std::filesystem requires C++17.
+void test_from_u8string(std::filesystem::path p) {
+    std::string s = from_u8string(p.u8string());
+}
+#endif
