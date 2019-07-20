@@ -22,14 +22,19 @@ void test1() {
     #warning Not testing binding references to array to string literals.
 #endif
 
+#if __cplusplus < 202002L // FIXME: Guessing at the C++20 value
+    // Don't warn if testing C++11 or earlier.
+#else
 #if !defined(__GNUC__) // Includes Clang
     // gcc allowed conversions to reference to array of unknown bound in version
     // 9.0.0 20181027, but no longer does so as of 9.0.1 20190201.
-    // Neither gcc nor Clang implement P0388R2 yet.
-    // FIXME: Enable this test when gcc and/or Clang implements P0388R2.
+    // P0388R4 was adopted for C++20 and now makes such conversions well-formed,
+    // but neither gcc nor Clang implement it yet.
+    // FIXME: Enable this test when gcc and/or Clang implements P0388R4.
     const char (&rac)[] = U8("text");
 #else
     #warning Not testing binding references to array of unknown bound to string literals.
+#endif
 #endif
 }
 
@@ -51,14 +56,19 @@ void test_constexpr() {
     #warning Not testing constexpr initialization of pointers with string literals.
 #endif
 
+#if __cplusplus < 202002L // FIXME: Guessing at the C++20 value
+    // Don't warn if testing C++11 or earlier.
+#else
 #if !defined(__GNUC__) // Includes Clang
     // gcc allowed conversions to reference to array of unknown bound in version
     // 9.0.0 20181027, but no longer does so as of 9.0.1 20190201.
-    // Neither gcc nor Clang implement P0388R2 yet.
-    // FIXME: Enable this test when gcc and/or Clang implements P0388R2.
+    // P0388R4 was adopted for C++20 and now makes such conversions well-formed.
+    // but neither gcc nor Clang implement it yet.
+    // FIXME: Enable this test when gcc and/or Clang implements P0388R4.
     constexpr const char (&rac)[] = U8("text");
 #else
     #warning Not testing constexpr binding references to array of unknown bound to string literals.
+#endif
 #endif
 }
 
