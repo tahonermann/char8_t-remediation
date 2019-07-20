@@ -16,6 +16,7 @@ void test1() {
 #endif
     const char *ps = U8("text");
     const char *ps2 = U8("concatenated" "text");
+    const char *ps3 = U8(R"(raw)" "concatenated" R"X(text)X");
 #if !defined(__cpp_char8_t) || defined(__cpp_nontype_template_parameter_class)
     const char (&rac5)[5] = U8("text");
 #elif __cplusplus >= 202002L // FIXME: Guessing at the C++20 value
@@ -49,6 +50,7 @@ void test_constexpr() {
 #if !defined(__cpp_char8_t) || defined(__cpp_nontype_template_parameter_class)
     constexpr const char *ps = U8("text");
     constexpr const char *ps2 = U8("concatenated" "text");
+    constexpr const char *ps3 = U8(R"(raw)" "concatenated" R"X(text)X");
     constexpr const char (&rac5)[5] = U8("text");
 #elif __cplusplus >= 202002L // FIXME: Guessing at the C++20 value
     // Don't warn when compiling for C++17 or earlier.

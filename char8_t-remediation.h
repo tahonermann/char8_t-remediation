@@ -76,7 +76,6 @@ constexpr auto& operator""_as_char() {
 }
 
 #define U8(x) u8##x##_as_char
-#define U8R(x) FIXME // FIXME: Add support for raw string literals.
 
 
 #else // } !defined(__cpp_nontype_template_parameter_class) ||
@@ -96,7 +95,6 @@ inline const char* operator""_as_char(const char8_t *p, std::size_t) {
 }
 
 #define U8(x) u8##x##_as_char
-#define U8R(x) FIXME // FIXME: Add support for raw string literals.
 
 
 #endif // }
@@ -106,7 +104,6 @@ inline const char* operator""_as_char(const char8_t *p, std::size_t) {
 
 
 #define U8(x) u8##x
-#define U8R(x) FIXME // FIXME: Add support for raw string literals.
 
 
 #endif // }
