@@ -5,11 +5,11 @@
 # and conditions.
 
 ifeq ($(COMPILER),gcc)
-  CXX=/home/tom/products/gcc-9.1.0/bin/g++
-  CXXFLAGS=-fsyntax-only -Wall -Wno-unused-variable -Wno-unused-but-set-variable
+  CXX=g++
+  CXXFLAGS=-fsyntax-only -Wall -Wno-unused-variable -Wno-unused-but-set-variable $(EXTRA_CXXFLAGS)
 else ifeq ($(COMPILER),clang)
-  CXX=/home/tom/products/clang-7.0.0/bin/clang++
-  CXXFLAGS=-fsyntax-only -Wall -Wno-unused-variable
+  CXX=clang++
+  CXXFLAGS=-fsyntax-only -Wall -Wno-unused-variable $(EXTRA_CXXFLAGS)
 else
   $(error COMPILER not set or not recognized)
 endif
