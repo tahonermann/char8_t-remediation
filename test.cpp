@@ -66,11 +66,17 @@ void test_constexpr() {
 #if !defined(__cpp_char8_t) || defined(__cpp_nontype_template_parameter_class)
 #if defined(__cpp_deduction_guides)
 constexpr char_array ca1 = U8("text");
+constexpr const char(&rca1)[5] = ca1;
+constexpr char c1 = ca1[0];
 #elif __cplusplus >= 201703L // Don't warn if testing C++14 or earlier.
     #warning Not testing constexpr deduced array size initialization with string literals.
 #endif
 constexpr char_array<5> ca2 = U8("text");
+constexpr const char(&rca2)[5] = ca2;
+constexpr char c2 = ca2[0];
 constexpr char_array<7> ca3 = U8("text");
+constexpr const char(&rca3)[7] = ca3;
+constexpr char c3 = ca3[0];
 #else
     #warning Not testing constexpr array initialization with string literals.
 #endif
@@ -83,11 +89,14 @@ void test_array_init() {
 #if !defined(__cpp_char8_t) || defined(__cpp_nontype_template_parameter_class)
 #if defined(__cpp_deduction_guides)
     constexpr char_array ca1 = U8("text");
+    constexpr char c1 = ca1[0];
 #elif __cplusplus >= 201703L // Don't warn if testing C++14 or earlier.
     #warning Not testing constexpr deduced array size initialization with string literals.
 #endif
     constexpr char_array<5> ca2 = U8("text");
+    constexpr char c2 = ca2[0];
     constexpr char_array<7> ca3 = U8("text");
+    constexpr char c3 = ca3[0];
 #else
     #warning Not testing constexpr array initialization with string literals.
 #endif
