@@ -60,8 +60,8 @@ The implementation of
 in gcc 9.1.0 is incomplete and incorrectly rejects literal operator templates
 declared with non-type template parameters of literal class type.  This issue is
 tracked by
-[bug 88095](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88095 "class nontype template parameter UDL string literals doesn't accepts deduction placeholder").  This issue currently prevents use of the `U8`
-macro when compiling for C++20.  A patch is available.
+[bug 88095](https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88095 "class nontype template parameter UDL string literals doesn't accepts deduction placeholder") and has been fixed for gcc 9.3 and 10.  This issue currently prevents use of the `U8`
+macro when compiling for C++20.
 
 [P0732R2](https://wg21.link/p0732 "Class Types in Non-Type Template Parameters")
 has not yet been implemented as of Clang 8.  As a result, the `U8` macro can not
