@@ -44,7 +44,7 @@ struct char8_t_string_literal {
 // implement support for operator <=>, but does provide an implementation
 // of P0732R2 (that presumably relies on implicit memberwise comparison).
 #if defined(__cpp_impl_three_way_comparison) // {
-    auto operator <=>(const char8_t_string_literal&) = default;
+    auto operator <=>(const char8_t_string_literal&) const = default;
 #endif // }
     char8_t s[N];
 };
