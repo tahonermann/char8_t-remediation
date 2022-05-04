@@ -44,7 +44,7 @@ struct char8_t_string_literal {
 // implement support for operator <=>, but does provide an implementation
 // of P0732R2 (that presumably relies on implicit memberwise comparison).
 #if defined(__cpp_impl_three_way_comparison) // {
-    auto operator <=>(const char8_t_string_literal&) = default;
+    auto operator <=>(const char8_t_string_literal&) const = default;
 #endif // }
     char8_t s[N];
 };
@@ -170,14 +170,14 @@ char_array(const char8_t(&)[N]) -> char_array<N>;
 // from_u8string enables explicit conversion from std::u8string to
 // std::string.
 
-std::string from_u8string(const std::string &s) {
+inline std::string from_u8string(const std::string &s) {
   return s;
 }
-std::string from_u8string(std::string &&s) {
+inline std::string from_u8string(std::string &&s) {
   return std::move(s);
 }
 #if defined(__cpp_lib_char8_t)
-std::string from_u8string(const std::u8string &s) {
+inline std::string from_u8string(const std::u8string &s) {
   return std::string(s.begin(), s.end());
 }
 #endif
