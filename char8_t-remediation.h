@@ -15,7 +15,8 @@
 
 #if defined(__cpp_char8_t) // {
 
-#if defined(__cpp_nontype_template_parameter_class) \
+#if (defined(__cpp_nontype_template_parameter_class) \
+     || defined(__cpp_nontype_template_args)) \
  && defined(__cpp_deduction_guides) // {
 
 // Non-type template parameters with class type are supported.  This enables
